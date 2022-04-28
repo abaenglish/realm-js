@@ -565,7 +565,7 @@ public:
         {"findByQuery", wrap<SubscriptionSetClass<T>::find_by_query>},
 
         // Mutable-only methods
-        {"add", wrap<add>},
+        {"_add", wrap<add>},
         {"removeByName", wrap<remove_by_name>},
         {"remove", wrap<remove>},
         {"removeSubscription", wrap<remove_subscription>},
@@ -669,9 +669,9 @@ void MutableSubscriptionSetClass<T>::add(ContextType ctx, ObjectType this_object
     args.validate_between(1, 2);
 
     auto results_arg = Value::validated_to_object(ctx, args[0], "results");
-    if (!Object::template is_instance<ResultsClass<T>>(ctx, results_arg)) {
+    /*if (!Object::template is_instance<ResultsClass<T>>(ctx, results_arg)) {
         throw std::runtime_error("Argument to 'add' must be a collection of Realm objects.");
-    }
+    }*/
 
     if (args.count == 2 && !Value::is_undefined(ctx, args[1])) {
         auto options_arg = Value::validated_to_object(ctx, args[1], "options");

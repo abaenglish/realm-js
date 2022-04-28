@@ -1,6 +1,6 @@
 import React, {useCallback, useRef, useState} from 'react';
 import {Realm, AppProvider} from '@realm/react';
-import {Pressable, SafeAreaView, StyleSheet, Text} from 'react-native';
+import {Pressable, SafeAreaView, StyleSheet, Text, View} from 'react-native';
 
 import {TaskRealmContext} from './models';
 import {LoginScreen, AuthState} from './components/LoginScreen';
