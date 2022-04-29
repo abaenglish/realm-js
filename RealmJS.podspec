@@ -8,22 +8,24 @@ app_path = File.expand_path('../..', __dir__)
 # There is no API to detect the use of "use_frameworks!" in the Podfile which depends on this Podspec.
 # The "React" framework is only available and should be used if the Podfile calls use_frameworks!
 # Therefore we make an assumption on the location of the Podfile and check if it contains "use_frameworks!" ...
-podfile_path = File.expand_path('ios/Podfile', app_path)
+# podfile_path = File.expand_path('ios/Podfile', app_path)
 
-if !ENV['REALM_USE_FRAMEWORKS'].present?
-  begin
-    podfile = File.read(podfile_path)
-    uses_frameworks = podfile.scan(/\n\s*use_frameworks!\n/).any?
-  rescue
-    uses_frameworks = false
-  end
-else
-  uses_frameworks = ENV['REALM_USE_FRAMEWORKS'] == 'true' ? true : false
-end
+# if !ENV['REALM_USE_FRAMEWORKS'].present?
+#   begin
+#     podfile = File.read(podfile_path)
+#     uses_frameworks = podfile.scan(/\n\s*use_frameworks!\n/).any?
+#   rescue
+#     uses_frameworks = false
+#   end
+# else
+#   uses_frameworks = ENV['REALM_USE_FRAMEWORKS'] == 'true' ? true : false
+# end
+#
+# if ENV['DEBUG_REALM_JS_PODSPEC'].present?
+#   puts "RealmJS thinks the Podfile #{uses_frameworks ? "is" : "is not"} calling use_frameworks!"
+# end
 
-if ENV['DEBUG_REALM_JS_PODSPEC'].present?
-  puts "RealmJS thinks the Podfile #{uses_frameworks ? "is" : "is not"} calling use_frameworks!"
-end
+uses_frameworks = true
 
 Pod::Spec.new do |s|
   s.name                   = "RealmJS"
